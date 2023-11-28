@@ -17,13 +17,11 @@ public class B10989 {
         for(int i = 0; i < N; i++){
             arr[i] = Integer.parseInt(br.readLine());
         }
-
         Arrays.sort(arr);
 
         for(int i = 0; i < N; i++){
             sb.append(arr[i]).append('\n');
         }
-
         System.out.println(sb);
     }
 }
