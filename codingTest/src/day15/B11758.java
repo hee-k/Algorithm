@@ -16,6 +16,7 @@ public class B11758 {
         int y3 = Integer.parseInt(st.nextToken());
         int result = (x1 * y2 + x2 * y3 + x3 * y1) - (x2 * y1 + x3 * y2 + x1 * y3);
         int ans = 0;
+
         if (result > 0) {
             ans = 1;
         } else if (result < 0) {
@@ -23,6 +24,7 @@ public class B11758 {
         } else {
             ans = 0;
         }
+
         System.out.println(ans);
     }
 }
