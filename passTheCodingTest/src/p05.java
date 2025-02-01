@@ -1,7 +1,7 @@
-package src;
-
 // https://school.programmers.co.kr/learn/courses/30/lessons/12949?language=java
 // 행렬의 곱셈
+
+package src;
 
 public class p05 {
 

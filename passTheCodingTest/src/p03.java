@@ -1,9 +1,9 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/68644?language=java
+// 두 개 뽑아서 더하기
+
 package src;
 
 import java.util.HashSet;
-
-// https://school.programmers.co.kr/learn/courses/30/lessons/68644?language=java
-// 두 개 뽑아서 더하기
 
 public class p03 {
 

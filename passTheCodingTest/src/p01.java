@@ -1,7 +1,5 @@
 package src;
 
-// 정수 배열을 입력 받아 정렬해서 반환하는 함수 작성
-
 import java.util.Arrays;
 
 public class p01 {

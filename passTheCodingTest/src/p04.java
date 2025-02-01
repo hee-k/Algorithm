@@ -1,3 +1,6 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/68644?language=java
+// 모의고사
+
 package src;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package src;
-
 // https://school.programmers.co.kr/learn/courses/30/lessons/42889?language=java
 // 실패율
+
+package src;
 
 import java.util.HashMap;
 
