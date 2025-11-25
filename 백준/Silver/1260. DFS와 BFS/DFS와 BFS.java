@@ -1,12 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
-    static boolean[][] graph;
+    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
     static boolean[] visited;
     static int n, m, v;
     static StringBuilder sb = new StringBuilder();
@@ -19,15 +17,22 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
         v = Integer.parseInt(st.nextToken());
 
-        graph = new boolean[n + 1][n + 1];
         visited = new boolean[n + 1];
+
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
-            graph[x][y] = true;
-            graph[y][x] = true;
+            graph.get(x).add(y);
+            graph.get(y).add(x);
+        }
+
+        for (int i = 1; i <= n; i++) {
+            Collections.sort(graph.get(i));
         }
 
         dfs(v);
@@ -43,8 +48,8 @@ public class Main {
         visited[idx] = true;
         sb.append(idx).append(" ");
 
-        for (int i = 1; i <= n; i++) {
-            if (!visited[i] && graph[idx][i]) dfs(i);
+        for (int next : graph.get(idx)) {
+            if (!visited[next]) dfs(next);
         }
     }
 
@@ -57,10 +62,10 @@ public class Main {
             int idx = queue.poll();
             sb.append(idx).append(" ");
 
-            for (int i = 1; i <= n; i++) {
-                if (!visited[i] && graph[idx][i]) {
-                    visited[i] = true;
-                    queue.add(i);
+            for (int next : graph.get(idx)) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    queue.add(next);
                 }
             }
         }
