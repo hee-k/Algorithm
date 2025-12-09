@@ -46,7 +46,9 @@ public class Main {
         Arrays.fill(dist, INF);
         dist[start] = 0;
 
+        // 조기종료 추가
         for (int i = 1; i <= n - 1; i++) {
+            boolean changed = false;
             for (int[] edge : edges) {
                 int from = edge[0];
                 int to = edge[1];
@@ -54,8 +56,10 @@ public class Main {
 
                 if (dist[from] != INF && dist[from] + weight < dist[to]) {
                     dist[to] = dist[from] + weight;
+                    changed = true;
                 }
             }
+            if (!changed) break;
         }
 
         for (int[] edge : edges) {
