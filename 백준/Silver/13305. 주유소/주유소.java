@@ -9,21 +9,21 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        int[] dist = new int[n - 1];
-        int[] price = new int[n];
+        long[] dist = new long[n - 1];
+        long[] price = new long[n];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n - 1; i++) {
-            dist[i] = Integer.parseInt(st.nextToken());
+            dist[i] = Long.parseLong(st.nextToken());
         }
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            price[i] = Integer.parseInt(st.nextToken());
+            price[i] = Long.parseLong(st.nextToken());
         }
 
-        int sum = 0;
-        int minPrice = price[0];
+        long sum = 0;
+        long minPrice = price[0];
 
         for (int i = 0; i < n - 1; i++) {
             if (price[i] < minPrice) {
