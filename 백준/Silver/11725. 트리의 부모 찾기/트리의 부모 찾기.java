@@ -1,57 +1,46 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class Main {
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    static boolean[] visited;
+    static ArrayList<ArrayList<Integer>> list;
     static int[] parent;
-    static int n;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-        n = Integer.parseInt(br.readLine());
-
-        visited = new boolean[n + 1];
-        parent = new int[n + 1];
-
+        list = new ArrayList<>();
         for (int i = 0; i <= n; i++) {
-            graph.add(new ArrayList<>());
+            list.add(new ArrayList<>());
         }
 
         for (int i = 0; i < n - 1; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
-            graph.get(x).add(y);
-            graph.get(y).add(x);
+            int u = Integer.parseInt(st.nextToken());
+            int v = Integer.parseInt(st.nextToken());
+            list.get(u).add(v);
+            list.get(v).add(u);
         }
 
-        bfs(1);
+        parent = new int[n + 1];
+        parent[1] = 1;
+        dfs(1);
 
         StringBuilder sb = new StringBuilder();
         for (int i = 2; i <= n; i++) {
             sb.append(parent[i]).append("\n");
         }
-        System.out.println(sb);
+        System.out.print(sb);
     }
 
-    static void bfs(int start) {
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(start);
-        visited[start] = true;
-
-        while (!queue.isEmpty()) {
-            int idx = queue.poll();
-
-            for (int next : graph.get(idx)) {
-                if (!visited[next]) {
-                    visited[next] = true;
-                    parent[next] = idx;
-                    queue.add(next);
-                }
+    static void dfs(int node) {
+        for (int next : list.get(node)) {
+            if (parent[next] == 0) {
+                parent[next] = node;
+                dfs(next);
             }
         }
     }
