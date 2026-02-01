@@ -5,14 +5,13 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String word = br.readLine();
-
+        String s = br.readLine();
         String[] arr = {"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
 
-        for (String s : arr) {
-            word = word.replace(s, ".");
+        for (String str : arr) {
+            s = s.replace(str, "*");
         }
 
-        System.out.println(word.length());
+        System.out.println(s.length());
     }
 }
